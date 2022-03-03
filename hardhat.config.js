@@ -10,6 +10,15 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
+task("deploy", "Deploys the contract", async (taskArgs, hre) => {
+  const LimeToken = await hre.ethers.getContractFactory("LimeToken");
+  const lime = await LimeToken.deploy();
+
+  await lime.deployed();
+
+  console.log("LimeCoin deployed to:", lime.address);
+});
+
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 

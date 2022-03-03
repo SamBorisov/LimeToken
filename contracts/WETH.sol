@@ -4,9 +4,9 @@ pragma solidity ^0.7.0;
 
 import "@openzeppelin/contracts/presets/ERC20PresetMinterPauser.sol";
 
-contract LimeToken is ERC20PresetMinterPauser {
+contract WETH is ERC20PresetMinterPauser {
 
-	constructor() ERC20PresetMinterPauser("LimeToken", "LMT") {
+	constructor() ERC20PresetMinterPauser("Wrapped ETH", "WETH") {
 
 	}
 
