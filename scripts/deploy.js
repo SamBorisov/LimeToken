@@ -7,5 +7,8 @@ const run = async function() {
     const ethWrapperContract = await ETHWrapper.deploy();
     console.log('Waiting for ETHWrapper deployment...');
     await ethWrapperContract.deployed();
+
+    console.log('ETHWrapper Contract address: ', ethWrapperContract.address);
+    console.log('Done!');
 }
 run()
