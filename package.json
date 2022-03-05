@@ -2,5 +2,9 @@
   "name": "hardhat-project",
   "dependencies": {
     "@openzeppelin/contracts": "^3.4.1"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-etherscan": "^3.0.3",
+    "@nomiclabs/hardhat-ganache": "^2.0.1"
   }
 }

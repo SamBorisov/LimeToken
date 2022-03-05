@@ -18,20 +18,20 @@ const run = async function() {
     const wrapperContract = new ethers.Contract(wrapperContractAddress, ETHWrapper.abi, wallet);
     const tokenContract = new ethers.Contract(WETHContractAddress, WETH.abi, wallet);
 
-	const wrapTx = await wrapperContract.wrap({value: wrapValue})
-	await wrapTx.wait();
+	const approveTx = await tokenContract.approve(wrapperContractAddress, wrapValue)
+	await approveTx.wait()
 
-	let balance = await tokenContract.balanceOf(wallet.address)
-	console.log("Balance after wrapping:", balance.toString())
+	const unwrapTx = await wrapperContract.unwrap(wrapValue)
+	await unwrapTx.wait()
 
-	let contractETHBalance = await provider.getBalance(wrapperContractAddress);
-	console.log("Contract ETH balance after wrapping:", contractETHBalance.toString())
+	balance = await tokenContract.balanceOf(wallet.address)
+	console.log("Balance after unwrapping:", balance.toString())
 
-
-    const wethAddress = await wrapperContract.WETHToken();
+	contractETHBalance = await provider.getBalance(wrapperContractAddress);
+	console.log("Contract ETH balance after unwrapping:", contractETHBalance.toString())
 
  
-    console.log("WETH Address: ", wethAddress);
+   
 
     
 }
